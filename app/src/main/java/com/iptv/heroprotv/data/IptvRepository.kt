@@ -199,7 +199,7 @@ class IptvRepository(private val storage: StorageManager) {
         )
     }
 
-    suspend fun processOneBulkLine(
+        suspend fun processOneBulkLine(
         line: String,
         onProfileCreated: (UserProfile) -> Unit
     ): BulkItemResult = withContext(Dispatchers.IO) {
@@ -226,16 +226,8 @@ class IptvRepository(private val storage: StorageManager) {
                 }
                 val maxC = userInfo.get("max_connections")?.takeIf { !it.isJsonNull }?.asString?.toIntOrNull()
 
-                val liveC = runCatching {
-                    JsonParser.parseString(fetchRawText("$base&action=get_live_streams")).asJsonArray.size()
-                }.getOrDefault(0)
-                val vodC = runCatching {
-                    JsonParser.parseString(fetchRawText("$base&action=get_vod_streams")).asJsonArray.size()
-                }.getOrDefault(0)
-                val serC = runCatching {
-                    JsonParser.parseString(fetchRawText("$base&action=get_series")).asJsonArray.size()
-                }.getOrDefault(0)
-
+                // Otimização: Não baixamos os arrays gigantes de streams no lote. 
+                // O conteúdo será carregado sob demanda quando o usuário ativar o perfil.
                 val profile = buildNewProfile(
                     sourceType = "xtream",
                     sourceLabel = cleanServer,
@@ -244,11 +236,11 @@ class IptvRepository(private val storage: StorageManager) {
                     pass = creds.password,
                     validity = validity,
                     connections = maxC,
-                    contentCounts = ContentCounts(liveC, vodC, serC),
+                    contentCounts = ContentCounts(0, 0, 0),
                     bulkOrigin = true
                 )
                 onProfileCreated(profile)
-                BulkItemResult(ok = true, hero = profile.hero, type = "XTREAM", count = liveC + vodC + serC)
+                BulkItemResult(ok = true, hero = profile.hero, type = "XTREAM", count = 0)
             } catch (e: Exception) {
                 BulkItemResult(ok = false, error = e.message ?: "Erro")
             }
@@ -258,19 +250,17 @@ class IptvRepository(private val storage: StorageManager) {
             return@withContext try {
                 val text = fetchRawText(line)
                 if (text.contains("#EXTM3U") || text.contains("#EXTINF")) {
-                    val ch = PlaylistParser.parseM3U(text)
-                    if (ch.isEmpty()) throw Exception("M3U vazia")
-                    val liveCount = ch.count { it.type == ContentType.LIVE }
-                    val vodCount = ch.count { it.type == ContentType.VOD }
+                    // Contagem leve sem instanciar milhares de objetos na memória
+                    val liveCount = text.lines().count { it.startsWith("#EXTINF") }
                     val profile = buildNewProfile(
                         sourceType = "m3u",
                         sourceLabel = line,
                         server = line,
-                        contentCounts = ContentCounts(liveCount, vodCount, 0),
+                        contentCounts = ContentCounts(liveCount, 0, 0),
                         bulkOrigin = true
                     )
                     onProfileCreated(profile)
-                    return@withContext BulkItemResult(ok = true, hero = profile.hero, type = "M3U", count = ch.size)
+                    return@withContext BulkItemResult(ok = true, hero = profile.hero, type = "M3U", count = liveCount)
                 }
                 val ch = PlaylistParser.parseTXT(text)
                 if (ch.isNotEmpty()) {
@@ -305,6 +295,7 @@ class IptvRepository(private val storage: StorageManager) {
 
         return@withContext BulkItemResult(ok = false, error = "Não reconhecido")
     }
+
 
     suspend fun loadSeriesInfo(
         server: String,
