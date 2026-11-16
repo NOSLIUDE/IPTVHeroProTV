@@ -707,17 +707,19 @@
                     android:layout_weight="1"
                     android:background="@drawable/bg_video_frame"
                     android:padding="6dp">
+   
+                 <androidx.media3.ui.PlayerView
+                  android:id="@+id/player_view"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@color/black"
+                  app:auto_show="true"
+                  app:show_timeout="3500"
+                  app:resize_mode="fit"
+                  app:show_buffering="when_playing"
+                  app:use_controller="true" />
 
-                    <androidx.media3.ui.PlayerView
-                        android:id="@+id/player_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/black"
-                        app:controller_auto_show="true"
-                        app:controller_show_timeout="3500"
-                        app:resize_mode="fit"
-                        app:show_buffering="when_playing"
-                        app:use_controller="true" />
+                    
 
                     <!-- STATUS OVERLAY -->
                     <TextView
