@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity() {
         binding.episodesList.adapter = episodeAdapter
     }
 
-        private fun setupPlayer() {
+    private fun setupPlayer() {
         val dataSourceFactory = OkHttpDataSource.Factory(repository.okHttpClient)
             .setUserAgent("IPTVHeroProTV/1.0 (Android)")
 
@@ -169,7 +169,6 @@ class MainActivity : AppCompatActivity() {
             )
             .build()
 
-        // Configuração robusta de extratores para suportar fluxos MPEG-TS (.ts) ao vivo
         val extractorsFactory = androidx.media3.extractor.DefaultExtractorsFactory()
             .setTsExtractorFlags(
                 androidx.media3.extractor.ts.DefaultTsPayloadReaderFactory.FLAG_ENABLE_HDMV_DTS_AUDIO_TRACKS
@@ -182,6 +181,7 @@ class MainActivity : AppCompatActivity() {
             .setLoadControl(loadControl)
             .build()
             .also { player ->
+                binding.playerView.player = player
                 player.addListener(object : Player.Listener {
                     override fun onPlaybackStateChanged(playbackState: Int) {
                         when (playbackState) {
@@ -204,16 +204,6 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
                     }
-
-                    override fun onPlayerError(error: PlaybackException) {
-                        binding.statusOverlay.visibility = View.VISIBLE
-                        binding.statusOverlay.text = "❌ Erro na reprodução: ${error.errorCodeName}"
-                        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-                    }
-                })
-            }
-        }
-        
 
                     override fun onIsPlayingChanged(isPlaying: Boolean) {
                         if (isPlaying) {
@@ -767,12 +757,11 @@ class MainActivity : AppCompatActivity() {
             var success = 0
             var failed = 0
             val total = lists.size
-            val concurrency = 5 // Reduzido para estabilizar o processamento e exibir os logs corretamente
+            val concurrency = 5
 
             for (i in lists.indices step concurrency) {
                 if (!isActive) break
                 val chunk = lists.subList(i, minOf(i + concurrency, total))
-                
                 binding.bulkModalMsg.text = "${i + 1}/$total: ${lists[i].take(55)}..."
                 binding.bulkProgress.progress = (((i + 1).toFloat() / total) * 100).toInt()
 
