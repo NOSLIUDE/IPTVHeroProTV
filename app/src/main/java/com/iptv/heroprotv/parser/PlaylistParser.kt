@@ -8,15 +8,15 @@ import java.security.MessageDigest
 object PlaylistParser {
 
     private val extinfNameRegex = Regex(",(.*)$")
-    private val extinfGroupRegex = Regex("group-title="([^"]*)"")
+    private val extinfGroupRegex = Regex("group-title=\"([^\"]*)\"")
+    private val hostRegex = Regex("(https?://[^/\\s]+)", RegexOption.IGNORE_CASE)
     private val xtreamPatterns = listOf(
-        Regex("https?://[^\s]+/get\.php\?[^\s]*username=([^&\s]+)[^\s]*password=([^&\s]+)", RegexOption.IGNORE_CASE),
-        Regex("https?://[^\s]+/player_api\.php\?[^\s]*username=([^&\s]+)[^\s]*password=([^&\s]+)", RegexOption.IGNORE_CASE)
+        Regex("https?://[^\\s]+/get\\.php\\?[^\\s]*username=([^&\\s]+)[^\\s]*password=([^&\\s]+)", RegexOption.IGNORE_CASE),
+        Regex("https?://[^\\s]+/player_api\\.php\\?[^\\s]*username=([^&\\s]+)[^\\s]*password=([^&\\s]+)", RegexOption.IGNORE_CASE)
     )
-    private val hostRegex = Regex("(https?://[^/\s]+)", RegexOption.IGNORE_CASE)
 
     fun parseM3U(text: String): List<ChannelItem> {
-        val lines = text.split(Regex("\r?\n"))
+        val lines = text.split(Regex("\\r?\\n"))
         val channels = mutableListOf<ChannelItem>()
         var currentName: String? = null
         var currentGroup: String = "Geral"
@@ -57,7 +57,7 @@ object PlaylistParser {
     }
 
     fun parseTXT(text: String): List<ChannelItem> {
-        val lines = text.split(Regex("\r?\n"))
+        val lines = text.split(Regex("\\r?\\n"))
         val channels = mutableListOf<ChannelItem>()
         for (rawLine in lines) {
             val l = rawLine.trim()
@@ -112,7 +112,7 @@ object PlaylistParser {
     }
 
     fun parseHeroUrls(text: String): List<String> {
-        return text.split(Regex("\r?\n"))
+        return text.split(Regex("\\r?\\n"))
             .map { it.trim() }
             .filter { it.isNotEmpty() && !it.startsWith("#") }
             .map { line ->
