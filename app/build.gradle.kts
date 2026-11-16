@@ -57,12 +57,14 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 
     // Media3 ExoPlayer (HLS, TS, MP4, MKV, RTSP - Zero WebView)
-    val media3Version = "1.2.1"
+    val media3Version = "1.2.0"
     implementation("androidx.media3:media3-exoplayer:$media3Version")
-    implementation "androidx.media3:media3-exoplayer-hls:1.2.0")
+    implementation "androidx.media3:media3-exoplayer-hls:$media3Version")
     implementation("androidx.media3:media3-exoplayer-dash:$media3Version")
     implementation("androidx.media3:media3-exoplayer-rtsp:$media3Version")
     implementation("androidx.media3:media3-datasource-okhttp:$media3Version")
     implementation("androidx.media3:media3-ui:$media3Version")
     implementation("androidx.media3:media3-session:$media3Version")
+    // VLC player (hls,ts,mp4,mkv,rtsp,rtmp)
+    implementation 'org.videolan.android:libvlc-all:3.6.0-eap14'
 }
