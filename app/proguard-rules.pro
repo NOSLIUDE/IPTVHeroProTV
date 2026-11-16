@@ -1,0 +1,2 @@
+-keep class com.iptv.heroprotv.model.** { *; }
+-keepattributes Signature

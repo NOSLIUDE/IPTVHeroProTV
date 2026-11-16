@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ink">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- HEADER -->
+        <LinearLayout
+            android:id="@+id/header_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_header_gradient"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/app_title"
+                style="@style/HeroComicTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎬 IPTV HERO PRO TV"
+                android:textColor="@color/paper"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_header_fullscreen"
+                style="@style/HeroUiText"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_blue_button"
+                android:focusable="true"
+                android:minHeight="0dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="⛶ TELA CHEIA"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/proxy_indicator"
+                style="@style/HeroUiText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_danger_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="PROXY: OFF"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/user_menu_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_user_menu_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="6dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="4dp">
+
+                <TextView
+                    android:id="@+id/current_avatar"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_avatar_circle"
+                    android:gravity="center"
+                    android:text="👤"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/current_profile_name"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="6dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:maxWidth="150dp"
+                    android:text="Nenhum perfil"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▼"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- TOP TABS: HERO LISTA | XTREAM | PROXY -->
+        <LinearLayout
+            android:id="@+id/top_tabs_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/ink_2"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <LinearLayout
+                android:id="@+id/tab_btn_hero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tab_text_hero"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="🦸 HERO LISTA"
+                    android:textColor="@color/marvel_yellow"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/tab_indicator_hero"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/marvel_yellow" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tab_btn_xtream"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tab_text_xtream"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="🔑 XTREAM"
+                    android:textColor="@color/text_dim"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/tab_indicator_xtream"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tab_btn_proxy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tab_text_proxy"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="🛡️ PROXY"
+                    android:textColor="@color/text_dim"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/tab_indicator_proxy"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider_top_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
+
+        <!-- TAB PANELS CONTAINER -->
+        <FrameLayout
+            android:id="@+id/tab_panels_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/panel">
+
+            <!-- PANEL 1: HERO LISTA -->
+            <LinearLayout
+                android:id="@+id/panel_hero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/btn_load_hero"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_hero_button"
+                    android:focusable="true"
+                    android:minHeight="0dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:text="🦸 CARREGAR HERO LISTA"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_check_hero"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/bg_secondary_button"
+                    android:focusable="true"
+                    android:minHeight="0dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="🔄 VERIFICAR"
+                    android:textColor="@color/text_primary"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hero_hint"
+                    style="@style/HeroUiText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Lista pública atualizada automaticamente. Clique em carregar para sincronizar."
+                    android:textColor="@color/text_dim"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/hero_counter"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text=""
+                    android:textColor="@color/marvel_yellow"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- PANEL 2: XTREAM -->
+            <LinearLayout
+                android:id="@+id/panel_xtream"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/xc_server"
+                    style="@style/HeroUiText"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_input_box"
+                    android:hint="Servidor (ex: http://dominio.com:8080)"
+                    android:imeOptions="actionNext"
+                    android:inputType="textUri"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_dim"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/xc_user"
+                    style="@style/HeroUiText"
+                    android:layout_width="130dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_input_box"
+                    android:hint="Usuário"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_dim"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/xc_pass"
+                    style="@style/HeroUiText"
+                    android:layout_width="130dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_input_box"
+                    android:hint="Senha"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_dim"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_connect_xtream"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_yellow_button"
+                    android:focusable="true"
+                    android:minHeight="0dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="CONECTAR"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- PANEL 3: PROXY -->
+            <LinearLayout
+                android:id="@+id/panel_proxy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/proxy_url"
+                    style="@style/HeroUiText"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_input_box"
+                    android:hint="https://seu-proxy.onrender.com/?url="
+                    android:imeOptions="actionDone"
+                    android:inputType="textUri"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_dim"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_save_proxy"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_yellow_button"
+                    android:focusable="true"
+                    android:minHeight="0dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:text="SALVAR"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_test_proxy"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_secondary_button"
+                    android:focusable="true"
+                    android:minHeight="0dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:text="TESTAR"
+                    android:textColor="@color/text_primary"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_clear_proxy"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_danger_button"
+                    android:focusable="true"
+                    android:minHeight="0dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:text="REMOVER"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <View
+            android:id="@+id/divider_panels"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
+
+        <!-- MAIN WORKSPACE: SIDEBAR (ASIDE) + VIDEO AREA -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <!-- SIDEBAR (330dp matching HTML aside) -->
+            <LinearLayout
+                android:id="@+id/sidebar"
+                android:layout_width="330dp"
+                android:layout_height="match_parent"
+                android:background="@color/ink_2"
+                android:orientation="vertical">
+
+                <!-- CONTENT TABS: AO VIVO | FILMES | SÉRIES -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_content_tabs_gradient"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/content_tab_live"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/content_text_live"
+                            style="@style/HeroUiText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="8dp"
+                            android:text="📺 AO VIVO"
+                            android:textColor="@color/marvel_yellow"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:id="@+id/content_ind_live"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:background="@color/marvel_yellow" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/content_tab_vod"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/content_text_vod"
+                            style="@style/HeroUiText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="8dp"
+                            android:text="🎬 FILMES"
+                            android:textColor="@color/paper"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:id="@+id/content_ind_vod"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:background="@android:color/transparent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/content_tab_series"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/content_text_series"
+                            style="@style/HeroUiText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="8dp"
+                            android:text="📽️ SÉRIES"
+                            android:textColor="@color/paper"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:id="@+id/content_ind_series"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:background="@android:color/transparent" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <!-- SEARCH BAR FOR MOVIES & SERIES -->
+                <LinearLayout
+                    android:id="@+id/search_bar_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/panel"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="4dp">
+
+                    <EditText
+                        android:id="@+id/search_input"
+                        style="@style/HeroUiText"
+                        android:layout_width="0dp"
+                        android:layout_height="34dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_input_box"
+                        android:drawableStart="@android:drawable/ic_menu_search"
+                        android:drawablePadding="6dp"
+                        android:hint="Buscar filmes, séries ou canais..."
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_dim"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btn_clear_search"
+                        style="@style/HeroUiText"
+                        android:layout_width="32dp"
+                        android:layout_height="34dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_danger_button"
+                        android:focusable="true"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:padding="0dp"
+                        android:text="✕"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <!-- CATEGORY FILTER SPINNER -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/panel"
+                    android:paddingStart="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="8dp">
+
+                    <Spinner
+                        android:id="@+id/category_filter"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_input_box"
+                        android:focusable="true"
+                        android:popupBackground="@color/panel" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/black" />
+
+                <!-- CHANNEL / VOD / SERIES LIST -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/channel_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:padding="8dp" />
+
+                    <TextView
+                        android:id="@+id/empty_list_text"
+                        style="@style/HeroUiText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="24dp"
+                        android:text="Carregue uma lista para começar"
+                        android:textColor="@color/text_dim"
+                        android:textSize="13sp" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- SIDEBAR RIGHT BORDER -->
+            <View
+                android:id="@+id/sidebar_border"
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:background="@color/black" />
+
+            <!-- VIDEO AREA -->
+            <LinearLayout
+                android:id="@+id/video_area"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/black"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <!-- VIDEO CONTAINER WITH MARVEL/DC DOUBLE BORDER -->
+                <FrameLayout
+                    android:id="@+id/video_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_video_frame"
+                    android:padding="6dp">
+
+                    <androidx.media3.ui.PlayerView
+                        android:id="@+id/player_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/black"
+                        app:controller_auto_show="true"
+                        app:controller_show_timeout="3500"
+                        app:resize_mode="fit"
+                        app:show_buffering="when_playing"
+                        app:use_controller="true" />
+
+                    <!-- STATUS OVERLAY -->
+                    <TextView
+                        android:id="@+id/status_overlay"
+                        style="@style/HeroUiText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|start"
+                        android:layout_margin="12dp"
+                        android:background="@drawable/bg_status_overlay"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="Aguardando..."
+                        android:textColor="@color/marvel_yellow"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <!-- SEASONS & EPISODES OVERLAY PANEL -->
+                    <LinearLayout
+                        android:id="@+id/seasons_panel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/seasons_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_header_gradient"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <Button
+                                android:id="@+id/seasons_back_btn"
+                                style="@style/HeroUiText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_marginEnd="12dp"
+                                android:background="@drawable/bg_secondary_button"
+                                android:focusable="true"
+                                android:minHeight="0dp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:text="◀ VOLTAR"
+                                android:textColor="@color/text_primary"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/seasons_title"
+                                style="@style/HeroComicTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="Série"
+                                android:textColor="@color/paper"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <!-- SEASONS COLUMN -->
+                            <LinearLayout
+                                android:layout_width="190dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/ink_2"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/HeroUiText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/panel"
+                                    android:padding="8dp"
+                                    android:text="TEMPORADAS"
+                                    android:textColor="@color/text_dim"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="@color/black" />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/seasons_list"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:padding="6dp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/black" />
+
+                            <!-- EPISODES COLUMN -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/episodes_col_title"
+                                    style="@style/HeroUiText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/panel"
+                                    android:padding="8dp"
+                                    android:text="EPISÓDIOS"
+                                    android:textColor="@color/text_dim"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="@color/black" />
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1">
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/episodes_list"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="6dp" />
+
+                                    <TextView
+                                        android:id="@+id/seasons_status_text"
+                                        style="@style/HeroUiText"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:padding="16dp"
+                                        android:text="Carregando..."
+                                        android:textColor="@color/text_dim"
+                                        android:textSize="13sp"
+                                        android:visibility="gone" />
+                                </FrameLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- BOTTOM CONTROLS BAR -->
+                <LinearLayout
+                    android:id="@+id/bottom_controls"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/panel"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/current_channel"
+                        style="@style/HeroUiText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Nenhum item selecionado"
+                        android:textColor="@color/text_dim"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btn_bottom_fullscreen"
+                        style="@style/HeroUiText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="34dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/bg_blue_button"
+                        android:focusable="true"
+                        android:minHeight="0dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="⛶ TELA CHEIA"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_input_box"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="4dp">
+
+                        <View
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_marginEnd="6dp"
+                            android:background="@color/green_valid" />
+
+                        <TextView
+                            android:id="@+id/active_conns"
+                            style="@style/HeroUiText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 CONEXÕES"
+                            android:textColor="@color/text_dim"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- USER PROFILES DROPDOWN PANEL -->
+    <FrameLayout
+        android:id="@+id/user_menu_backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        android:clickable="true"
+        android:focusable="false"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/user_menu_panel"
+            android:layout_width="420dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="14dp"
+            android:background="@drawable/bg_modal_box"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_header_gradient"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <TextView
+                    style="@style/HeroComicTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="👤 PERFIS / LISTAS"
+                    android:textColor="@color/paper"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/profile_count"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 perfis"
+                    android:textColor="@color/marvel_yellow"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="310dp"
+                android:background="@color/ink_2">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/profile_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp" />
+
+                <TextView
+                    android:id="@+id/empty_profiles_text"
+                    style="@style/HeroUiText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Nenhum perfil criado ainda."
+                    android:textColor="@color/text_dim"
+                    android:textSize="13sp" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/ink_3"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <Button
+                    android:id="@+id/btn_menu_hero"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_hero_button"
+                    android:focusable="true"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="🦸 HERO"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_menu_export"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_secondary_button"
+                    android:focusable="true"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="📤 EXPORTAR"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_menu_bulk"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_secondary_button"
+                    android:focusable="true"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="📥 LOTE"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_menu_clear"
+                    style="@style/HeroUiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_danger_button"
+                    android:focusable="true"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="🗑️ LIMPAR"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- BULK PROCESSING MODAL -->
+    <FrameLayout
+        android:id="@+id/bulk_modal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EB05050A"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="480dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_modal_box"
+            android:orientation="vertical"
+            android:padding="3dp">
+
+            <TextView
+                style="@style/HeroComicTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_header_gradient"
+                android:padding="14dp"
+                android:text="📚 PROCESSANDO LOTE"
+                android:textColor="@color/paper"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/bulk_modal_msg"
+                style="@style/HeroUiText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="18dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="18dp"
+                android:text="Preparando..."
+                android:textColor="@color/text_dim"
+                android:textSize="12sp" />
+
+            <ProgressBar
+                android:id="@+id/bulk_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                android:max="100"
+                android:progress="0"
+                android:progressTint="@color/marvel_yellow" />
+
+            <ScrollView
+                android:id="@+id/bulk_log_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_margin="18dp"
+                android:background="@drawable/bg_input_box"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/bulk_log"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:text=""
+                    android:textColor="@color/text_dim"
+                    android:textSize="11sp" />
+            </ScrollView>
+
+            <Button
+                android:id="@+id/bulk_cancel_btn"
+                style="@style/HeroUiText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_danger_button"
+                android:focusable="true"
+                android:text="CANCELAR"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/bulk_close_btn"
+                style="@style/HeroUiText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_secondary_button"
+                android:focusable="true"
+                android:text="FECHAR"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- FULLSCREEN EXIT HINT TOAST -->
+    <TextView
+        android:id="@+id/exit_fs_hint"
+        style="@style/HeroUiText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_status_overlay"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Pressione VOLTAR para sair da tela cheia"
+        android:textColor="@color/marvel_yellow"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</FrameLayout>

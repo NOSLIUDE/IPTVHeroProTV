@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.IPTVHeroProTV" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/marvel_red</item>
+        <item name="colorPrimaryVariant">@color/marvel_red_dark</item>
+        <item name="colorSecondary">@color/dc_blue</item>
+        <item name="android:windowBackground">@color/ink</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:navigationBarColor">@color/black</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="HeroComicTitle">
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:shadowColor">@color/black</item>
+        <item name="android:shadowDx">3</item>
+        <item name="android:shadowDy">3</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="HeroUiText">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+</resources>

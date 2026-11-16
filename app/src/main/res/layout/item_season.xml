@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="6dp"
+    android:background="@drawable/bg_channel_item"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingEnd="10dp">
+
+    <View
+        android:id="@+id/season_stripe"
+        android:layout_width="4dp"
+        android:layout_height="match_parent"
+        android:minHeight="38dp"
+        android:background="@color/marvel_yellow" />
+
+    <TextView
+        android:id="@+id/season_title"
+        style="@style/HeroUiText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingStart="10dp"
+        android:paddingTop="9dp"
+        android:paddingBottom="9dp"
+        android:text="Temporada 1"
+        android:textColor="@color/text_primary"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/season_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#55000000"
+        android:paddingStart="6dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="6dp"
+        android:paddingBottom="2dp"
+        android:text="10"
+        android:textColor="@color/text_primary"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+</LinearLayout>
