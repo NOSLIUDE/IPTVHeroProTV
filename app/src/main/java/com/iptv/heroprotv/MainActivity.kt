@@ -155,6 +155,7 @@ class MainActivity : AppCompatActivity() {
         binding.episodesList.layoutManager = LinearLayoutManager(this)
         binding.episodesList.adapter = episodeAdapter
     }
+
     private fun setupPlayer() {
         val dataSourceFactory = OkHttpDataSource.Factory(repository.okHttpClient)
             .setUserAgent("IPTVHeroProTV/1.0 (Android)")
@@ -169,7 +170,6 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         val extractorsFactory = androidx.media3.extractor.DefaultExtractorsFactory()
-
         val mediaSourceFactory = DefaultMediaSourceFactory(dataSourceFactory, extractorsFactory)
 
         exoPlayer = ExoPlayer.Builder(this)
@@ -200,23 +200,6 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
                     }
-
-                    override fun onIsPlayingChanged(isPlaying: Boolean) {
-                        if (isPlaying) {
-                            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-                        } else {
-                            window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-                        }
-                    }
-
-                    override fun onPlayerError(error: PlaybackException) {
-                        binding.statusOverlay.visibility = View.VISIBLE
-                        binding.statusOverlay.text = "❌ Erro na reprodução: ${error.errorCodeName}"
-                        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-                    }
-                })
-            }
-    }
 
                     override fun onIsPlayingChanged(isPlaying: Boolean) {
                         if (isPlaying) {
