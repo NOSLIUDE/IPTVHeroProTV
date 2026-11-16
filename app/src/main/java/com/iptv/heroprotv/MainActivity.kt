@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity() {
         binding.episodesList.adapter = episodeAdapter
     }
 
-    private fun setupPlayer() {
+        private fun setupPlayer() {
         val dataSourceFactory = OkHttpDataSource.Factory(repository.okHttpClient)
             .setUserAgent("IPTVHeroProTV/1.0 (Android)")
 
@@ -169,12 +169,19 @@ class MainActivity : AppCompatActivity() {
             )
             .build()
 
+        // Configuração robusta de extratores para suportar fluxos MPEG-TS (.ts) ao vivo
+        val extractorsFactory = androidx.media3.extractor.DefaultExtractorsFactory()
+            .setTsExtractorFlags(
+                androidx.media3.extractor.ts.DefaultTsPayloadReaderFactory.FLAG_ENABLE_HDMV_DTS_AUDIO_TRACKS
+            )
+
+        val mediaSourceFactory = DefaultMediaSourceFactory(dataSourceFactory, extractorsFactory)
+
         exoPlayer = ExoPlayer.Builder(this)
-            .setMediaSourceFactory(DefaultMediaSourceFactory(dataSourceFactory))
+            .setMediaSourceFactory(mediaSourceFactory)
             .setLoadControl(loadControl)
             .build()
             .also { player ->
-                binding.playerView.player = player
                 player.addListener(object : Player.Listener {
                     override fun onPlaybackStateChanged(playbackState: Int) {
                         when (playbackState) {
@@ -197,6 +204,16 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
                     }
+
+                    override fun onPlayerError(error: PlaybackException) {
+                        binding.statusOverlay.visibility = View.VISIBLE
+                        binding.statusOverlay.text = "❌ Erro na reprodução: ${error.errorCodeName}"
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+                    }
+                })
+            }
+        }
+        
 
                     override fun onIsPlayingChanged(isPlaying: Boolean) {
                         if (isPlaying) {
