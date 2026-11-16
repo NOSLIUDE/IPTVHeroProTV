@@ -750,11 +750,12 @@ class MainActivity : AppCompatActivity() {
             var success = 0
             var failed = 0
             val total = lists.size
-            val concurrency = 15
+            val concurrency = 5 // Reduzido para estabilizar o processamento e exibir os logs corretamente
 
             for (i in lists.indices step concurrency) {
                 if (!isActive) break
                 val chunk = lists.subList(i, minOf(i + concurrency, total))
+                
                 binding.bulkModalMsg.text = "${i + 1}/$total: ${lists[i].take(55)}..."
                 binding.bulkProgress.progress = (((i + 1).toFloat() / total) * 100).toInt()
 
