@@ -635,8 +635,7 @@ class MainActivity : AppCompatActivity() {
             }
             contentResolver.openOutputStream(uri)?.use { out ->
                 OutputStreamWriter(out, Charsets.UTF_8).use { writer ->
-                    writer.write(lines.joinToString("
-"))
+                    writer.write(lines.joinToString("\n"))
                 }
             }
             binding.statusOverlay.text = "✅ Perfis exportados com sucesso!"
@@ -673,9 +672,7 @@ class MainActivity : AppCompatActivity() {
                 binding.heroCounter.text = "✅ Sem alterações ($dateStr)"
                 showConfirm(
                     "📡 HERO LISTA",
-                    "A lista não mudou desde $dateStr.
-
-Deseja reprocessar mesmo assim?"
+                    "A lista não mudou desde $dateStr.\n\nDeseja reprocessar mesmo assim?"
                 ) {
                     startBulkImport(urls, hash)
                 }
@@ -801,10 +798,8 @@ Deseja reprocessar mesmo assim?"
 
     private fun appendBulkLog(line: String) {
         val current = binding.bulkLog.text.toString()
-        val updated = if (current.isEmpty()) line else "$current
-$line"
-        val trimmed = updated.lines().takeLast(120).joinToString("
-")
+        val updated = if (current.isEmpty()) line else "$current\n$line"
+        val trimmed = updated.lines().takeLast(120).joinToString("\n")
         binding.bulkLog.text = trimmed
         binding.bulkLogScroll.post {
             binding.bulkLogScroll.fullScroll(View.FOCUS_DOWN)
@@ -929,7 +924,7 @@ $line"
         if (filtered.isEmpty()) {
             binding.emptyListText.visibility = View.VISIBLE
             binding.emptyListText.text = if (queryLower.isNotEmpty()) {
-                "Nenhum resultado para "$currentSearchQuery"."
+                "Nenhum resultado para \"$currentSearchQuery\"."
             } else {
                 "Nenhum item."
             }
