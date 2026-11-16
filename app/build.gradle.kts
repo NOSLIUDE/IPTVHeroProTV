@@ -59,7 +59,7 @@ dependencies {
     // Media3 ExoPlayer (HLS, TS, MP4, MKV, RTSP - Zero WebView)
     val media3Version = "1.2.1"
     implementation("androidx.media3:media3-exoplayer:$media3Version")
-    implementation("androidx.media3:media3-exoplayer-hls:$media3Version")
+    implementation "androidx.media3:media3-exoplayer-hls:1.2.0")
     implementation("androidx.media3:media3-exoplayer-dash:$media3Version")
     implementation("androidx.media3:media3-exoplayer-rtsp:$media3Version")
     implementation("androidx.media3:media3-datasource-okhttp:$media3Version")
